@@ -84,9 +84,12 @@ public class Client {
         String result = "";
         try {
             result = trySendRequest(request);
-        } catch (Exception e) {
-            System.err.println("Hiba! A kérés sikertelen!");
+        } catch (InterruptedException e) {
+            System.err.println("Hiba! Megszakítás történt!");
             System.err.println(e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Hiba! A szerver nem elérhető!");
+            System.err.println(e.getMessage());            
         }
         return result;
     }
